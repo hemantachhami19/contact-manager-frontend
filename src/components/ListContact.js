@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-//import ContactService from './ContactService';
 import axios from 'axios';
 import TableRow from './TableRow';
 import {Link} from 'react-router-dom';
 
-let styles = {
-  marginTop: '100px'
-};
 class ListContact extends Component {
-
   constructor(props) {
       super(props);
       this.state = {value: '', items: ''};
-
     }
+
     componentDidMount(){
       axios.get('http://localhost:8000/api/v1/contacts')
       .then(response => {
@@ -23,6 +18,7 @@ class ListContact extends Component {
         console.log(error);
       })
     }
+
     tabRow(){
       if(this.state.items instanceof Array){
         return this.state.items.map(function(object, i){
@@ -34,17 +30,17 @@ class ListContact extends Component {
 
     render() {
       return (
-        <div className="container" style={styles}>
-        <h3>List of Documents</h3>
+        <div className="container" >
+        <h3>List of Contacts</h3>
         <Link to={"/add-contact/"} >Add New Contact</Link>
             <table className="table table-striped">
               <thead>
                 <tr>
-                  <td>First Name</td>
-                  <td>Last Name</td>
-                  <td>Email</td>
-                  <td>Phone no</td>
-                  <td></td>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Phone no</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>

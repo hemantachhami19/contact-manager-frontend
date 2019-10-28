@@ -14,7 +14,7 @@ class TableRow extends Component {
     .then(json => {
     if(json.status===200){
       alert('Record deleted successfully!!');
-      this.props.history.push('/index')
+      this.props.history.push('/')
     }
     else{
       alert('something went wrong!!');
@@ -25,7 +25,6 @@ class TableRow extends Component {
     })
   }
   render() {
-      console.log(this.props);
     return (
         <tr>
           <td>
@@ -41,12 +40,9 @@ class TableRow extends Component {
             {this.props.obj.phoneNumber}
           </td>
           <td>
-          <Link to={"/edit-contact/"+this.props.obj.id} className="btn btn-primary">Edit</Link>
-        </td>
-          <td>
-            <form >
-              <button type="button" onClick={this.deleteDocument} className="btn btn-danger">Delete</button>
-            </form>
+              <Link to={"/edit-contact/"+this.props.obj.id} className="btn btn-primary btn-xl mr-2"><i className="fa fa-fw fa-edit"/>Edit</Link>
+          <button type="button" onClick={this.deleteDocument} className="btn btn-danger"><i
+              className="fa fa-fw fa-edit"/>Delete</button>
           </td>
         </tr>
     );
