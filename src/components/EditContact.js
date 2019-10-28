@@ -15,7 +15,7 @@ class EditContact extends Component {
   }
 
   componentDidMount(){
-    axios.get('http://localhost:8000/api/v1/contacts/'+this.props.match.params.id)
+    ContactService.getApi('/'+this.props.match.params.id)
     .then(response => {
       console.log(response,'response------');
       this.setState({
@@ -36,7 +36,7 @@ class EditContact extends Component {
 
   editContact=()=>{
     console.log(this.props.match.params.id,'--id')
-    ContactService.putApi(this.props.match.params.id,{firstName:this.state.firstName,lastName:this.state.lastName,email:this.state.email,phoneNumber:this.state.phoneNumber})
+    ContactService.putApi('/'+this.props.match.params.id,{firstName:this.state.firstName,lastName:this.state.lastName,email:this.state.email,phoneNumber:this.state.phoneNumber})
     .then(json => {
       console.log(json,'response on edit request!!!!!');
       if(json.status === 200){

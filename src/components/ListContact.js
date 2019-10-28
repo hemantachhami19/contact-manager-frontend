@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TableRow from './TableRow';
 import {Link} from 'react-router-dom';
+import ContactService from './ContactService';
 
 class ListContact extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class ListContact extends Component {
     }
 
     componentDidMount(){
-      axios.get('http://localhost:8000/api/v1/contacts')
+      ContactService.getApi('/')
       .then(response => {
         this.setState({ items: response.data.data });
       })
@@ -31,15 +32,18 @@ class ListContact extends Component {
     render() {
       return (
         <div className="container" >
-        <h3>List of Contacts</h3>
-        <Link to={"/add-contact/"} >Add New Contact</Link>
+            <div>
+              <h3 className="text-center">Contact List</h3>
+              <Link to={"/add-contact/"} className="float-right btn btn-dark btn-sm mb-1">< i className ="fa fa-fw fa-plus-circle"/>Add New Contact</Link>
+            </div>
+
             <table className="table table-striped">
               <thead>
                 <tr>
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Email</th>
-                  <th>Phone no</th>
+                  <th>Phone No</th>
                   <th>Action</th>
                 </tr>
               </thead>
