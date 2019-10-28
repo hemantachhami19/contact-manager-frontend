@@ -10,7 +10,7 @@ class TableRow extends Component {
   }
 
   deleteDocument= () =>{
-    ContactService.deleteApi(this.props.obj.id)
+    ContactService.deleteApi('/'+this.props.obj.id)
     .then(json => {
     if(json.status===200){
       alert('Record deleted successfully!!');
