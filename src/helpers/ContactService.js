@@ -1,6 +1,6 @@
 // import React from 'react';
 import axios from 'axios'
-const baseUrl="http://localhost:8000/api/v1/contacts"
+const baseUrl = "http://localhost:8000/api/v1/contacts"
 
  class ContactService {
 
