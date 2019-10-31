@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import TableRow from './TableRow';
+import TableRow from '../components/TableRow';
 import {Link} from 'react-router-dom';
-import ContactService from './ContactService';
+import ContactService from '../helpers/ContactService';
 
 class ListContact extends Component {
   constructor(props) {
       super(props);
-      this.state = {value: '', items: ''};
+      this.state = {value: '', items: []};
     }
-
     componentDidMount(){
       ContactService.getApi('/')
       .then(response => {
@@ -20,13 +19,13 @@ class ListContact extends Component {
     }
 
     tabRow(){
-      if(this.state.items instanceof Array){
-        return this.state.items.map(function(object, i){
-            return <TableRow obj={object} key={i} />;
+      if(this.state.items.length > 0){
+        return this.state.items.map((item, i) => {
+           return <TableRow data={item} key={i} />;
         })
       }
     }
-   
+
 
     render() {
       return (

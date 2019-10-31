@@ -1,8 +1,7 @@
 import React from 'react';
-import ContactService from './ContactService';
+import ContactService from '../helpers/ContactService';
 
-
-class AddContact extends React.Component {
+class ContactForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,16 +12,10 @@ class AddContact extends React.Component {
         }
     }
 
-
     addContact = () => {
-        ContactService.postApi('/', {
-            firstName: this.state.firstName,
-            email: this.state.email,
-            lastName: this.state.lastName,
-            phoneNumber: this.state.phoneNumber
-        })
+        const {firstName, email,lastName, phoneNumber} = this.state;
+        ContactService.postApi('/', { firstName, email, lastName, phoneNumber})
             .then(json => {
-                console.log(json);
                 if (json.data.status === 'success') {
                     this.props.history.push('/index')
                 } else {
@@ -34,6 +27,24 @@ class AddContact extends React.Component {
         })
     };
 
+    editContact=()=>{
+        console.log(this.props.match.params.id,'--id')
+        ContactService.putApi('/'+this.props.match.params.id,{firstName:this.state.firstName,lastName:this.state.lastName,email:this.state.email,phoneNumber:this.state.phoneNumber})
+            .then(json => {
+                console.log(json,'response on edit request!!!!!');
+                if(json.status === 200){
+                    alert('Record updated successfully!!')
+                    this.props.history.push('/index')
+                }
+                else{
+                    alert('something went wrong!!');
+                    this.props.history.push('/index')
+                }
+            }).catch((error)=>{
+            console.log("error-----------",error)
+        })
+    }
+
 
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value});
@@ -42,7 +53,7 @@ class AddContact extends React.Component {
     render() {
         return (
             <div>
-                <h2 className="text-center">Add Contact Form</h2>
+                <h2 className="text-center">Contact Form</h2>
                 <div className="row justify-content-md-center">
                     <div className="col-md-6 col-md-offset-3">
                         <form>

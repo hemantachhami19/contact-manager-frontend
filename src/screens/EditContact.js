@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ContactService from './ContactService';
+import ContactService from '../helpers/ContactService';
 class EditContact extends Component {
 
   constructor(props) {
@@ -14,6 +14,7 @@ class EditContact extends Component {
   }
 
   componentDidMount(){
+    console.log(this.props);
     ContactService.getApi('/'+this.props.match.params.id)
     .then(response => {
       console.log(response,'response------');
@@ -55,7 +56,7 @@ class EditContact extends Component {
     return (
 
       <div>
-      <h2 className="text-center">Edit Contact Form</h2>
+      <h2 className="text-center">Contact Form</h2>
         <div className="row justify-content-md-center">
           <div className="col-md-6 col-md-offset-3">
             <form>
@@ -77,6 +78,7 @@ class EditContact extends Component {
                 <label>Phone Number:</label>
                 <input name="phoneNumber" type="text" className="form-control" onChange={this.handleChange} value={this.state.phoneNumber}/>
               </div>
+
               <button type="button" onClick={this.editContact} className="btn btn-primary">Submit</button>
             </form>
           </div>

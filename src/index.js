@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-// import App from './App';
-
-import AddContact from './components/AddContact';
-import ListContact from './components/ListContact';
-import EditContact from './components/EditContact';
+import AddContact from './screens/AddContact';
+import ListContact from './screens/ListContact';
+import EditContact from './screens/EditContact';
 
 ReactDOM.render(
     <Router>
