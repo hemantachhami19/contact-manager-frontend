@@ -1,4 +1,4 @@
-import { Link,useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 
@@ -18,7 +18,7 @@ export default class Header extends Component {
         {authenticated ? (
           <li onClick={this._handleLogoutClick}>Logout</li>
         ) : (
-          <li onClick={this._handleSignInClick}>Login</li>
+          <li onClick={this._handleSignInClick}>Login with Facebook</li>
         )}
       </ul>
     );
@@ -35,10 +35,10 @@ export default class Header extends Component {
     // Logout using Twitter passport api
     // Set authenticated state to false in the HomePage
     window.open("http://localhost:8000/api/v1/auth/logout", "_self");
-    this.props.handleNotAuthenticated();
+    this.props._handleNotAuthenticated();
   };
 
-  handleNotAuthenticated = () => {
+  _handleNotAuthenticated = () => {
     this.setState({ authenticated: false });
 
   };
