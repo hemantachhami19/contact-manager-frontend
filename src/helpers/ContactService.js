@@ -4,7 +4,7 @@ import axios from 'axios'
 const baseUrl = "http://localhost:8000/api/v1/contacts";
 
 class ContactService {
-  
+
   static postApi(url, data) {
     return axios.post(baseUrl + url, data);
   }
