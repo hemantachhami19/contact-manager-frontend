@@ -10,19 +10,6 @@ export default class Header extends Component {
 
   render() {
     const { authenticated } = this.props;
-    console.log(authenticated);
-    // return (
-    //   <ul className="menu">
-    //     <li>
-    //       <Link to="/">Home</Link>
-    //     </li>
-    //     {authenticated ? (
-    //       <li onClick={this._handleLogoutClick}>Logout</li>
-    //     ) : (
-    //       <li onClick={this._handleSignInClick}>Login with Facebook</li>
-    //     )}
-    //   </ul>
-    // );
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-secondary mb-3 py-0">
         <div className="container">
