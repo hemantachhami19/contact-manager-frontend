@@ -47,11 +47,13 @@ class ListContact extends Component {
   render() {
     const {authenticated} = this.state;
     return (
+      <div>
+      <Header
+        authenticated={authenticated}
+        handleNotAuthenticated={this._handleNotAuthenticated}
+      />
       <div className="container">
-        <Header
-          authenticated={authenticated}
-          handleNotAuthenticated={this._handleNotAuthenticated}
-        />
+
         <h3 className="text-center">Contact List</h3>
         <Link to={"/add-contact/"} className="float-right btn btn-dark btn-sm mb-1">< i
           className="fa fa-fw fa-plus-circle"/>Add New Contact</Link>
@@ -69,6 +71,7 @@ class ListContact extends Component {
           {this.tabRow()}
           </tbody>
         </table>
+      </div>
       </div>
     );
   }

@@ -38,19 +38,19 @@ class EditContact extends Component {
   editContact = () => {
     const {firstName, email, lastName, phoneNumber} = this.state;
     if (firstName === "") {
-      this.setState({ errors: { firstName: "First Name is required" } });
+      this.setState({errors: {firstName: "First Name is required"}});
       return;
     }
     if (lastName === "") {
-      this.setState({ errors: { lastName: "Last Name is required" } });
+      this.setState({errors: {lastName: "Last Name is required"}});
       return;
     }
     if (email === "") {
-      this.setState({ errors: { email: "Email is required" } });
+      this.setState({errors: {email: "Email is required"}});
       return;
     }
     if (phoneNumber === "") {
-      this.setState({ errors: { phoneNumber: "PhoneNumber is required" } });
+      this.setState({errors: {phoneNumber: "PhoneNumber is required"}});
       return;
     }
 
@@ -75,52 +75,53 @@ class EditContact extends Component {
   };
 
   render() {
-    const {firstName, email, lastName, phoneNumber,errors} = this.state;
+    const {firstName, email, lastName, phoneNumber, errors} = this.state;
     return (
-      <div>
-        <h2 className="text-center">Contact Form</h2>
-        <div className="row justify-content-md-center">
-          <div className="col-md-6 col-md-offset-3">
-            <form>
-              <TextInputGroup
-                label="First Name"
-                name="firstName"
-                value={firstName}
-                placeholder="enter first name "
-                onChange={this.onChange}
-                error={errors.firstName}
-              />
+      <div className="container mt-4">
+      <div className="card">
+        <div className="card-header">Edit Contacts</div>
+        <div className="card-body">
+          <form>
+            <TextInputGroup
+              label="First Name"
+              name="firstName"
+              value={firstName}
+              placeholder="enter first name "
+              onChange={this.onChange}
+              error={errors.firstName}
+            />
 
-              <TextInputGroup
-                label="Last Name"
-                name="lastName"
-                value={lastName}
-                placeholder="enter last name"
-                onChange={this.onChange}
-                error={errors.lastName}
-              />
+            <TextInputGroup
+              label="Last Name"
+              name="lastName"
+              value={lastName}
+              placeholder="enter last name"
+              onChange={this.onChange}
+              error={errors.lastName}
+            />
 
-              <TextInputGroup
-                label="Email"
-                name="email"
-                value={email}
-                placeholder="enter email"
-                onChange={this.onChange}
-                error={errors.email}
-              />
-              <TextInputGroup
-                label="Phone Number:"
-                name="phoneNumber"
-                value={phoneNumber}
-                placeholder="enter phone number"
-                onChange={this.onChange}
-                error={errors.phoneNumber}
-              />
-              <button type="button" onClick={this.editContact} className="btn btn-primary">Submit</button>
-            </form>
-          </div>
+            <TextInputGroup
+              label="Email"
+              name="email"
+              value={email}
+              placeholder="enter email"
+              onChange={this.onChange}
+              error={errors.email}
+            />
+            <TextInputGroup
+              label="Phone Number:"
+              name="phoneNumber"
+              value={phoneNumber}
+              placeholder="enter phone number"
+              onChange={this.onChange}
+              error={errors.phoneNumber}
+            />
+            <button type="button" onClick={this.editContact} className="btn  btn-primary">Update Contact</button>
+          </form>
         </div>
       </div>
+      </div>
+
     );
   }
 }

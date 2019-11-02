@@ -52,10 +52,10 @@ class AddContact extends React.Component {
   render() {
     const {firstName, email, lastName, phoneNumber,errors} = this.state;
     return (
-      <div>
-        <h2 className="text-center">Contact Form</h2>
-        <div className="row justify-content-md-center">
-          <div className="col-md-6 col-md-offset-3">
+      <div className="container mt-4">
+        <div className="card">
+          <div className="card-header">Add New Contact</div>
+          <div className="card-body">
             <form>
               <TextInputGroup
                 label="First Name"
@@ -91,7 +91,7 @@ class AddContact extends React.Component {
                 onChange={this.onChange}
                 error={errors.phoneNumber}
               />
-              <button type="button" onClick={this.addContact} className="btn btn-primary">Submit</button>
+              <button type="button" onClick={this.addContact} className="btn btn-primary">Add Contact</button>
             </form>
           </div>
         </div>
