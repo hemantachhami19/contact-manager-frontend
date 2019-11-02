@@ -52,8 +52,8 @@ class ListContact extends Component {
         authenticated={authenticated}
         handleNotAuthenticated={this._handleNotAuthenticated}
       />
-      <div className="container">
-
+      { authenticated?
+        (<div className="container">
         <h3 className="text-center">Contact List</h3>
         <Link to={"/add-contact/"} className="float-right btn btn-dark btn-sm mb-1">< i
           className="fa fa-fw fa-plus-circle"/>Add New Contact</Link>
@@ -71,7 +71,16 @@ class ListContact extends Component {
           {this.tabRow()}
           </tbody>
         </table>
-      </div>
+      </div>)
+        :(
+          <div className="container">
+            <h1 className="display-4">simple Contact Manger</h1>
+            <p className="lead">Simple app to manage contacts</p>
+            <p className="text-secondary">Please Login with facebook</p>
+          </div>
+        )
+
+      }
       </div>
     );
   }
