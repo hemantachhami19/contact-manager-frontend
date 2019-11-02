@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
 import ContactService from '../helpers/ContactService';
+import TextInputGroup from "../components/TextInputGroup";
 
 class EditContact extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.state = {
       firstName: '',
       lastName: '',
       email: '',
-      phoneNumber: ''
+      phoneNumber: '',
+      errors: {}
     }
   }
 
@@ -29,12 +31,29 @@ class EditContact extends Component {
       })
   }
 
-  handleChange = (e) => {
+  onChange = (e) => {
     this.setState({[e.target.name]: e.target.value});
   };
 
   editContact = () => {
-    console.log(this.props.match.params.id, '--id');
+    const {firstName, email, lastName, phoneNumber} = this.state;
+    if (firstName === "") {
+      this.setState({ errors: { firstName: "First Name is required" } });
+      return;
+    }
+    if (lastName === "") {
+      this.setState({ errors: { lastName: "Last Name is required" } });
+      return;
+    }
+    if (email === "") {
+      this.setState({ errors: { email: "Email is required" } });
+      return;
+    }
+    if (phoneNumber === "") {
+      this.setState({ errors: { phoneNumber: "PhoneNumber is required" } });
+      return;
+    }
+
     ContactService.putApi('/contacts/' + this.props.match.params.id, {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -56,34 +75,47 @@ class EditContact extends Component {
   };
 
   render() {
+    const {firstName, email, lastName, phoneNumber,errors} = this.state;
     return (
       <div>
         <h2 className="text-center">Contact Form</h2>
         <div className="row justify-content-md-center">
           <div className="col-md-6 col-md-offset-3">
             <form>
-              <div className="form-group">
-                <label>First Name:</label>
-                <input name="firstName" type="text" className="form-control" onChange={this.handleChange}
-                       value={this.state.firstName}/>
-              </div>
-              <div className="form-group">
-                <label>Last Name:</label>
-                <input name="lastName" type="text" className="form-control" onChange={this.handleChange}
-                       value={this.state.lastName}/>
-              </div>
+              <TextInputGroup
+                label="First Name"
+                name="firstName"
+                value={firstName}
+                placeholder="enter first name "
+                onChange={this.onChange}
+                error={errors.firstName}
+              />
 
-              <div className="form-group">
-                <label>Email:</label>
-                <input name="email" type="text" className="form-control" onChange={this.handleChange}
-                       value={this.state.email}/>
-              </div>
+              <TextInputGroup
+                label="Last Name"
+                name="lastName"
+                value={lastName}
+                placeholder="enter last name"
+                onChange={this.onChange}
+                error={errors.lastName}
+              />
 
-              <div className="form-group">
-                <label>Phone Number:</label>
-                <input name="phoneNumber" type="text" className="form-control" onChange={this.handleChange}
-                       value={this.state.phoneNumber}/>
-              </div>
+              <TextInputGroup
+                label="Email"
+                name="email"
+                value={email}
+                placeholder="enter email"
+                onChange={this.onChange}
+                error={errors.email}
+              />
+              <TextInputGroup
+                label="Phone Number:"
+                name="phoneNumber"
+                value={phoneNumber}
+                placeholder="enter phone number"
+                onChange={this.onChange}
+                error={errors.phoneNumber}
+              />
               <button type="button" onClick={this.editContact} className="btn btn-primary">Submit</button>
             </form>
           </div>
