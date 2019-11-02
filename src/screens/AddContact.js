@@ -14,7 +14,7 @@ class AddContact extends React.Component {
 
   addContact = () => {
     const {firstName, email, lastName, phoneNumber} = this.state;
-    ContactService.postApi('/', {firstName, email, lastName, phoneNumber})
+    ContactService.postApi('/contacts', {firstName, email, lastName, phoneNumber})
       .then(json => {
         if (json.data.status === 'success') {
           this.props.history.push('/index')

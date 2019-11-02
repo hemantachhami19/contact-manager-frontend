@@ -1,7 +1,7 @@
 // import React from 'react';
 import axios from 'axios'
-import KEYS  from "./config";
-const baseUrl = KEYS.baseUrl;
+import config  from "./config";
+const baseUrl = config.baseUrl;
 
 class ContactService {
 
@@ -10,6 +10,7 @@ class ContactService {
   }
 
   static putApi(url, data) {
+    console.log(url,data);
     return axios.put(baseUrl + url, data);
   }
 

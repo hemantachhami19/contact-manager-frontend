@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 class TableRow extends Component {
   deleteDocument = () => {
-    ContactService.deleteApi('/' + this.props.data.id).then(json => {
+    ContactService.deleteApi('/contacts/' + this.props.data.id).then(json => {
         if (json.status === 200) {
           alert('Record deleted successfully!!');
           this.props.history.push('/')

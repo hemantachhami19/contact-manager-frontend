@@ -14,7 +14,7 @@ class EditContact extends Component {
   }
 
   componentDidMount() {
-    ContactService.getApi('/' + this.props.match.params.id)
+    ContactService.getApi('/contacts/' + this.props.match.params.id)
       .then(response => {
         console.log(response, 'response------');
         this.setState({
@@ -35,7 +35,7 @@ class EditContact extends Component {
 
   editContact = () => {
     console.log(this.props.match.params.id, '--id');
-    ContactService.putApi('/' + this.props.match.params.id, {
+    ContactService.putApi('/contacts/' + this.props.match.params.id, {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
@@ -89,7 +89,6 @@ class EditContact extends Component {
           </div>
         </div>
       </div>
-
     );
   }
 }

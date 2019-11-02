@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import config  from "../helpers/config";
 
 export default class Header extends Component {
   static propTypes = {
@@ -28,13 +29,13 @@ export default class Header extends Component {
     // Authenticate using via passport api in the backend
     // Open Twitter login page
     // Upon successful login, a cookie session will be stored in the client
-    window.open("http://localhost:8000/api/v1/auth/facebook", "_self");
+    window.open(config.loginUrl, "_self");
   };
 
   _handleLogoutClick = () => {
     // Logout using Twitter passport api
     // Set authenticated state to false in the HomePage
-    window.open("http://localhost:8000/api/v1/auth/logout", "_self");
+    window.open(config.logOutUrl, "_self");
     this.props._handleNotAuthenticated();
   };
 
