@@ -37,7 +37,7 @@ class ListContact extends Component {
   }
 
   tabRow() {
-    if (this.state.items.length > 0) {
+    if (typeof this.state.items !== 'undefined' || this.state.items.length > 0) {
       return this.state.items.map((item, i) => {
         return <TableRow data={item} key={i}/>;
       })
