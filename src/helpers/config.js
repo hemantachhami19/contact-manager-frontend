@@ -1,4 +1,5 @@
-const baseUrl = 'http://localhost:8000/api/v1';
+require('dotenv').config();
+const baseUrl = process.env.REACT_APP_SERVER_URL||'http://localhost:8000/api/v1';
 const config = {
   baseUrl: baseUrl,
   checkAuthUrl: baseUrl + '/auth/login/success',
