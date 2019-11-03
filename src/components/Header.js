@@ -39,6 +39,7 @@ export default class Header extends Component {
   }
 
   _handleSignInClick = () => {
+    console.log(config.loginUrl);
     // Authenticate using via passport api in the backend
     // Open Twitter login page
     // Upon successful login, a cookie session will be stored in the client

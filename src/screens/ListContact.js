@@ -20,6 +20,7 @@ class ListContact extends Component {
         credentials: "include",
         headers: {Accept: "application/json"}
       });
+      console.log(response);
       const json = await response.json();
       if (json.success === true) {
         this.setState({
@@ -46,6 +47,7 @@ class ListContact extends Component {
 
   render() {
     const {authenticated} = this.state;
+    console.log("authentication status ==", authenticated);
     return (
       <div>
       <Header
