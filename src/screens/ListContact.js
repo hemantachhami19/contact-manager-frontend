@@ -21,7 +21,7 @@ class ListContact extends Component {
         headers: {
           Accept: "application/json",
         },
-        mode:'no-cors',
+        mode:'cors',
       });
       console.log(response);
       const json = await response.json();
