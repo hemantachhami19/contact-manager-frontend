@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import config  from "../helpers/config";
@@ -19,9 +18,9 @@ export default class Header extends Component {
           <div>
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <Link to="/" className="nav-link">
-                  <i className="fas fa-home" /> Home
-                </Link>
+                <a href="/" className="nav-link">
+                  <i className="fas fa-home" />Home
+                </a>
               </li>
               {authenticated ? (
                  <li className="nav-item nav-link" onClick={this._handleLogoutClick}><
