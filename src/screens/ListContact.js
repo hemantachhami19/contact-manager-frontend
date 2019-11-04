@@ -21,6 +21,9 @@ class ListContact extends Component {
         headers: {
           Accept: "application/json",
         },
+        extraHeaders: {
+          'Access-Control-Allow-Credentials': 'omit'
+        },
         mode:'cors',
       });
       console.log(response);
