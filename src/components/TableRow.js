@@ -15,7 +15,8 @@ class TableRow extends Component {
           this.props.history.push('/index')
         }
       }).catch((error) => {
-      console.log("error-----------", error)
+        alert('contacts cannot be deleted now. try again later!');
+        this.props.history.push('/index')
     })
   };
 

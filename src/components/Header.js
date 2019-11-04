@@ -41,13 +41,13 @@ export default class Header extends Component {
   _handleSignInClick = () => {
     console.log(config.loginUrl);
     // Authenticate using via passport api in the backend
-    // Open Twitter login page
+    // Open facebook login page
     // Upon successful login, a cookie session will be stored in the client
     window.open(config.loginUrl, "_self");
   };
 
   _handleLogoutClick = () => {
-    // Logout using Twitter passport api
+    // Logout using facebook passport api
     // Set authenticated state to false in the HomePage
     window.open(config.logOutUrl, "_self");
     this.props._handleNotAuthenticated();

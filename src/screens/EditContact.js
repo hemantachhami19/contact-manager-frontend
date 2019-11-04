@@ -18,13 +18,8 @@ class EditContact extends Component {
   componentDidMount() {
     ContactService.getApi('/contacts/' + this.props.match.params.id)
       .then(response => {
-        console.log(response, 'response------');
-        this.setState({
-          firstName: response.data.data.firstName,
-          lastName: response.data.data.lastName,
-          email: response.data.data.email,
-          phoneNumber: response.data.data.phoneNumber
-        });
+        const {firstName,lastName,email,phoneNumber} = response.data.data
+        this.setState({firstName, lastName, email, phoneNumber,});
       })
       .catch(function (error) {
         console.log(error);
@@ -61,7 +56,6 @@ class EditContact extends Component {
       phoneNumber: this.state.phoneNumber
     })
       .then(json => {
-        console.log(json, 'response on edit request!!!!!');
         if (json.status === 200) {
           alert('Record updated successfully!!');
           this.props.history.push('/index')
@@ -70,7 +64,7 @@ class EditContact extends Component {
           this.props.history.push('/index')
         }
       }).catch((error) => {
-      console.log("error-----------", error)
+      console.log( error)
     })
   };
 
@@ -121,7 +115,6 @@ class EditContact extends Component {
         </div>
       </div>
       </div>
-
     );
   }
 }
