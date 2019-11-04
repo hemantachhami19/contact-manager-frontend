@@ -40,7 +40,8 @@ class AddContact extends React.Component {
           this.props.history.push('/index')
         }
       }).catch((error) => {
-      console.log("error-----------", error)
+        alert('something went wrong!!');
+        this.props.history.push('/index')
     })
   };
 

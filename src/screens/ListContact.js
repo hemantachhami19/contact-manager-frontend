@@ -21,16 +21,11 @@ class ListContact extends Component {
         headers: {
           Accept: "application/json",
         },
-        // extraHeaders: {
-        //   'Access-Control-Allow-Credentials': 'omit'
-        // },
         mode:'cors',
       });
-      console.log(response);
       const json = await response.json();
-      console.log("json==",json);
       if (json.success === true) {
-        this.setState({
+        await this.setState({
           authenticated: true,
           user: json.user
         });
