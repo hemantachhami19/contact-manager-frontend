@@ -18,7 +18,8 @@ class ListContact extends Component {
       const response = await fetch(config.checkAuthUrl, {
         method: "GET",
         credentials: "include",
-        headers: {Accept: "application/json"}
+        headers: {Accept: "application/json"},
+        mode:'cors'
       });
       console.log(response);
       const json = await response.json();
